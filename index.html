@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            /* background-image: url('./bc.jpg');
+            background-position: center; /* Center the image */
+             /* background-repeat: no-repeat; Do not repeat the image */
+            /* background-size: cover; */
+            background-color: #7CEC9F;
+        }
+        #data{
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20%;
+            grid-gap: 5%
+        }
+        #data div{
+         display: flex;
+         background-color: #43BE31;
+         flex-direction: column;
+         border: 2px solid black;
+         padding: 5px;
+         text-align: left;
+        }
+        #data div img{
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<h1>Aditi Dukan</h1>
+<div id="data"></div>
+<script>
+    console.log("JO dekega mera coding uska ankh for denge");
+    const clothes = [
+        {
+            name: 'Shirt',
+            price: '$30',
+            DesignedBy: 'By Aditi Singh',
+            image: 'shirt.jpg'
+        },
+        {
+            name: 'Jeans',
+            price: '$50',
+            DesignedBy: 'By Manish Malhotra',
+            image: 'jeans.jpg'
+        },
+        {
+            name: 'Lehnga',
+            price: '$100',
+            DesignedBy: 'By Astha Singh',
+            image: 'lehnga.jpg'
+        },
+        {
+            name: 'Plazo',
+            price: '$30',
+            DesignedBy: 'By Ranu',
+            image: 'plazo.jpg'
+        },
+        {
+            name: 'Saree',
+            price: '$120',
+            DesignedBy: 'By Manish Malhotra',
+            image: 'saree.jpg'
+        },
+        {
+            name: 'T-Shirt',
+            price: '$40',
+            DesignedBy: 'By Aditi Singh',
+            image: 'tshirt.jpg'
+        }
+    ]
+    //To save the clothes into local storage we need to transform clothes(array of objects) to JSON
+    let clothe_products = JSON.stringify(clothes);
+    localStorage.setItem("myclothesbrand", clothe_products);
+    //display it on web page
+    //JSON cannot be used to display web page
+   clothe_products = JSON.parse(clothe_products);
+   function showproducts(){
+    let div = document.getElementById("data");
+   clothe_products.forEach(product => {
+    let div2 = document.createElement("div");
+    div2.classList.add("mystyle");
+    let product_image = document.createElement("img");
+    product_image.src = product.image;
+    let product_name = document.createElement("h3");
+    product_name.innerText = product.name;
+    let product_price = document.createElement("h3");
+    product_price.innerText = product.price;
+    let product_designedBy = document.createElement("p");
+    product_designedBy.innerText = product.DesignedBy;
+    div2.append(product_image,product_name,product_price,product_designedBy);
+    div.append(div2);
+   });
+}
+showproducts();
+</script>
+</body>
+</html>
